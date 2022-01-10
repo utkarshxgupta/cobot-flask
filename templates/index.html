@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/9074e5cf69.js" crossorigin="anonymous"></script>
+    <title>CoBot - The COVID19 chatbot</title>
+  </head>
+  <body>
+    <section class="msger">
+      <header class="msger-header">
+        <div class="msger-header-title">
+          <i class="fas fa-comment-alt"></i> <a href="/" class="h5" style="text-decoration:none"> Co-Bot</a>
+        </div>
+        <div class="msger-header-options">
+          <div class="dropdown">
+            <button class="fas fa-cog" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border:none; font-size: 21px;"></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a href="/delete" type="button" class="dropdown-item" >Clear chat</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      
+      <main class="msger-chat" id="myDIV">
+        {% for msgs in allMsgs %} 
+        <div class="msg right-msg">
+          <div
+           class="msg-img"
+           style="background-image: url({{ url_for('static',filename='user.svg')}})"
+          ></div>
+    
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">User</div>
+              <div class="msg-info-time">{{tm}}</div>
+            </div>
+    
+            <div class="msg-text">
+              {{msgs.user}}
+            </div>            
+           </div>
+           <script>
+            var elmnt = document.getElementById("myDIV");
+            elmnt.scrollTop += 500;
+          </script>
+        </div>
+        
+        <div class="msg left-msg">
+          <div
+           class="msg-img"
+           style="background-image: url({{ url_for('static',filename='bot.png')}})"
+          ></div>
+    
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">BOT</div>
+              <div class="msg-info-time">{{tm}}</div>
+            </div>
+    
+            <div class="msg-text">
+              {{msgs.bot}}
+            </div>
+          </div>
+          <script>
+            var elmnt = document.getElementById("myDIV");
+            elmnt.scrollTop += 500;
+          </script>
+        </div>
+        
+        {% endfor %}
+      </main>
+      
+      <form class="msger-inputarea" action="/" method="POST">
+        <input type="text" class="msger-input" placeholder="Enter your message..." name="chat" id="chat">
+        <button type="submit" class="msger-send-btn">Send</button>
+      </form>
+    </section>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    
+    <!--<script type="text/javascript" src="{{ url_for('static',filename='script.js')}}"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
