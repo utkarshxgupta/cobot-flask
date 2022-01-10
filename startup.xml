@@ -1,0 +1,8 @@
+<aiml version="0.9.3" encoding="UTF-8">
+	<category>
+	    <pattern>LOAD *</pattern>
+	    <template>
+		    <learn><star/>.xml</learn>
+	    </template>
+    </category>
+</aiml>

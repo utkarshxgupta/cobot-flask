@@ -1,0 +1,220 @@
+<aiml version="0.9.3" encoding="UTF-8">
+	<category>
+		<pattern>HELLO</pattern>
+		<template>Hello human, I am COBOT-19. What is your name?</template> 
+	</category>
+	<category>
+		<pattern>HI</pattern>
+		<template><srai>HELLO</srai></template>
+	</category>
+	<category>
+		<pattern>HEY</pattern>
+		<template><srai>HELLO</srai></template>
+	</category>
+
+	<category>
+		<pattern>MY NAME IS *</pattern>
+		<template><think><set name="username"><star/></set></think>
+            Hi,<get name="username"/> ask me anything.
+	    </template>
+	</category>
+	<category>
+		<pattern>WHAT IS NOVEL CORONAVIRUS</pattern>
+		<template>A novel coronavirus is a new coronavirus that has not been previously identified. The virus causing coronavirus
+		disease 2019 (COVID-19), is not the same as the coronaviruses that commonly circulate among humans and cause mild illness, like the common cold. WHO first learned of this new virus on 31 December 2019, following a report of a cluster of cases of ‘viral pneumonia’ in Wuhan, People’s Republic of China.</template> 
+	</category>
+	<category>
+		<pattern>WHAT IS COVID-19</pattern>
+		<template><srai>WHAT IS NOVEL CORONAVIRUS</srai></template>
+	</category>
+	<category>
+		<pattern>WHAT IS COVID 19</pattern>
+		<template><srai>WHAT IS NOVEL CORONAVIRUS</srai></template>
+	</category>
+	<category>
+		<pattern>WHAT IS COVID19</pattern>
+		<template><srai>WHAT IS NOVEL CORONAVIRUS</srai></template>
+	</category>
+	<category>
+		<pattern>WHAT IS CORONA</pattern>
+		<template><srai>WHAT IS NOVEL CORONAVIRUS</srai></template>
+	</category>
+	<category>
+		<pattern>WHAT IS CORONA VIRUS</pattern>
+		<template><srai>WHAT IS NOVEL CORONAVIRUS</srai></template>
+	</category>
+	<category>
+		<pattern>WHAT IS CORONAVIRUS</pattern>
+		<template><srai>WHAT IS NOVEL CORONAVIRUS</srai></template>
+	</category>
+
+	<category>
+		<pattern>* COMMUNITY SPREAD</pattern>
+		<template>Community spread means people have been infected with the virus in an area, including some who are not sure how or where they became infected. Each health department determines community spread differently based on local conditions. For more information on community spread in your area, you can visit the official website of Ministry of Health and Family Welfare, Government of India.​</template> 
+	</category>
+
+	<category>
+		<pattern>WHAT ARE THE SYMPTOMS OF COVID 19</pattern>
+		<template>People with COVID-19 have reported a wide range of symptoms – from mild symptoms to severe illness. Symptoms may appear 2-14 days after exposure to the virus. If you suffer from Shortness of breath, headache, loss of taste and smell,Persistent pain or pressure in the chest,High body temperature (above 38 °C) ,fatigue,dry cough, you might have COVID-19.</template> 
+	</category>
+	<category>
+		<pattern>* SIGNS *</pattern>
+		<template><srai>WHAT ARE THE SYMPTOMS OF COVID 19</srai></template>
+	</category>
+	<category>
+		<pattern>* SYMPTOMS *</pattern>
+		<template><srai>WHAT ARE THE SYMPTOMS OF COVID 19</srai></template>
+	</category>
+
+	<category>
+		<pattern>HOW CAN I PROTECT MYSELF</pattern>
+		<template> Don't worry ,it's easy! All you need to do is wear a mask over your nose and mouth, stay 6 feet away from others, wash your hands often, cover coughs and sneezes, clean and disinfect, monitor your health daily.</template> 
+	</category>
+	<category>
+		<pattern>* PRECAUTIONS</pattern>
+		<template><srai>HOW CAN I PROTECT MYSELF</srai></template> 
+	</category>
+	<category>
+		<pattern>* PROTECT *</pattern>
+		<template><srai>HOW CAN I PROTECT MYSELF</srai></template> 
+	</category>
+	<category>
+		<pattern>* PRECAUTIONS *</pattern>
+		<template><srai>HOW CAN I PROTECT MYSELF</srai></template> 
+	</category>
+
+	<category>
+		<pattern>* CONTACT *</pattern>
+		<template>You are considered a close contact even if you were wearing a mask while you were around someone with COVID-19. Although masks provide some measure of protection to the wearer, there is always the chance that you have been infected.</template> 
+	</category>
+
+	<category>
+		<pattern>TELL ME THE NUMBER OF POSITIVE CASES IN INDIA</pattern>
+		<template>Active cases in India are 2,23,335 out of 1,04,50,284 total cases in india.</template> 
+	</category>
+	<category>
+		<pattern>* ACTIVE CASES * INDIA</pattern>
+		<template><srai>TELL ME THE NUMBER OF POSITIVE CASES IN INDIA</srai></template> 
+	</category>
+	<category>
+		<pattern>* POSITIVE CASES * INDIA</pattern>
+		<template><srai>TELL ME THE NUMBER OF POSITIVE CASES IN INDIA</srai></template> 
+	</category>
+
+	<category>
+		<pattern>* APP *</pattern>
+		<template>Aarogya Setu might be the app for you. It is an Indian COVID–19 "contact tracing, syndromic mapping and self-assessment" digital service, primarily a mobile app, developed by the National Informatics Centre under the Ministry of Electronics and Information Technology (INDIA).</template> 
+	</category>
+
+	<category>
+		<pattern>HOW DOES COVID-19 SPREAD</pattern>
+		<template>Generally the virus spreads when people are in close contact. It spreads through respiratory droplets or small particles, such as those in aerosols, produced when an infected person coughs, sneezes, sings, talks, or breathes.</template> 
+	</category>
+	<category>
+		<pattern>HOW CAN I GET INFECTED</pattern>
+		<template><srai>HOW DOES COVID-19 SPREAD</srai></template> 
+	</category>
+	<category>
+		<pattern>* SPREAD</pattern>
+		<template><srai>HOW DOES COVID-19 SPREAD</srai></template> 
+	</category>
+
+	<category>
+		<pattern>* FIRST CASE *</pattern>
+		<template>In December 2019 , the first human case of COVID-19 disease caused by the novel coronavirus , subsequently named SARS-CoV-2 was reported by officials in Wuhan City, China.</template> 
+	</category>
+	<category>
+		<pattern>* DEATHS * INDIA</pattern>
+		<template>Number of Deaths are 1,50,999 out of 1,04,50,284 total cases . India has one of the lowest death rates in the world which is 1.45% .</template> 
+	</category>
+
+    <category>
+		<pattern>* RECOVERED * INDIA</pattern>
+		<template>India has an exceptionally well recovery rate of 96.4% . Number of recovered patients are 1,00,75,950 out of 1,04,50,284 total cases . India is one of the few countries where total active cases are decreasing day by day.</template>
+	</category>
+
+	<category>
+		<pattern>WHAT IF I AM SICK</pattern>
+		<template>Stay home if you or someone in your family gets sick, except to get medical care. Use a separate room and bathroom for sick household members (if possible). Wash your hands often with soap and water for at least 20 seconds. If soap and water are not readily available, use an alcohol-based hand sanitizer with at least 60% alcohol.Provide the sick person with clean disposable facemasks to wear at home.</template> 
+	</category>
+	<category>
+		<pattern>* SICK</pattern>
+		<template><srai>WHAT IF I AM SICK</srai></template> 
+	</category>
+
+	<category>
+		<pattern>WHEN SHOULD I SEEK EMERGENCY CARE IF I HAVE COVID-19</pattern>
+		<template>Trouble in breathing. Persistent pain or pressure in the chest. Inability to wake or stay awake. Bluish lips or face.</template> 
+	</category>
+	<category>
+		<pattern>* DEATHS * WORLD *</pattern>
+		<template>Number of Deaths are 1,939,210 in the world, according to Worldometer.</template> 
+	</category>
+
+	<category>
+		<pattern>WHAT ARE THE NUMBER OF POSITIVE CASES IN WORLD</pattern>
+		<template>Number of positive cases in world are 90,381,294, according to Worldometer.</template> 
+	</category>
+	<category>
+		<pattern>* ACTIVE CASES * WORLD</pattern>
+		<template><srai>WHAT ARE THE NUMBER OF POSITIVE CASES IN WORLD</srai></template> 
+	</category>
+
+	<category>
+		<pattern>WHERE IS THE NEAREST HOSPITAL</pattern>
+		<template>The nearest hospital near IIT Kanpur is the Regency Hospital in Swaroop Nagar area.Phone number-0512 350 2222 </template> 
+	</category>
+
+	<category>
+		<pattern>WHO IS AT MAXIMUM RISK FROM CORONA</pattern>
+		<template>People aged 60 years and over, and those with medical problems like high blood pressure, heart and lung problems, diabetes, obesity or cancer, are at higher risk of developing serious illness. However, anyone can get sick with COVID-19 and become seriously ill or die at any age so don't be complacent. </template> 
+	</category>
+	<category>
+		<pattern>* MOST VULNERABLE</pattern>
+		<template><srai>WHO IS AT MAXIMUM RISK FROM CORONA</srai></template> 
+	</category>
+	<category>
+		<pattern>* MOST VULNERABLE *</pattern>
+		<template><srai>WHO IS AT MAXIMUM RISK FROM CORONA</srai></template> 
+	</category>
+	<category>
+		<pattern>* MAXIMUM RISK *</pattern>
+		<template><srai>WHO IS AT MAXIMUM RISK FROM CORONA</srai></template> 
+	</category>
+	<category>
+		<pattern>* MAXIMUM RISK</pattern>
+		<template><srai>WHO IS AT MAXIMUM RISK FROM CORONA</srai></template> 
+	</category>
+	<category>
+		<pattern>* TREATMENTS *</pattern>
+		<template>Scientists around the world are working to find and develop cure for COVID-19. Optimal supportive care includes oxygen for severely ill patients and those who are at risk for severe disease and more advanced respiratory support such as ventilation for patients who are critically ill.</template> 
+	</category>
+
+	<category>
+		<pattern>* GLOBAL STATS</pattern>
+		<template> Acoording to total cases, the world rankings are: 
+			1) U.S.A with 22,861,551
+			2) India with 10,467,431
+			3) Brazil with 8,105,790
+			4) Russia with 3,401,954
+			5) U.K with 3,072,349
+		</template>
+	</category>
+	<category>
+		<pattern>WHAT ABOUT VACCINE</pattern>
+		<template>The Central Drugs Standard Control Organisation (CDSCO), on 3 January announced that India had granted emergency-use authorisation to Covishield, vaccine being manufactured by the Serum Institute of India and Covaxin (Bharat Biotech). Dry run is currently being carried out across the nation. In the first phase, which will begin from January 16, priority will be given to frontline workers from various sectors such as health, education and police.</template>
+	</category>
+	<category>
+		<pattern>* VACCINE *</pattern>
+		<template><srai>WHAT ABOUT VACCINE</srai></template>
+	</category>
+	<category>
+		<pattern>* VACCINE</pattern>
+		<template><srai>WHAT ABOUT VACCINE</srai></template>
+	</category>
+
+	<category>
+		<pattern>*</pattern>
+		<template>OOPS! I haven't learnt this yet. Try asking something else. </template>
+	</category>
+</aiml>

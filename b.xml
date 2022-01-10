@@ -1,0 +1,56 @@
+<aiml version="0.9.3" encoding="UTF-8">
+
+<category>
+	<pattern>WHAT ELSE CAN YOU DO</pattern>
+	<template>
+		I can tell COVID related jokes and fun facts. What's your choice ?
+	</template>
+</category>
+
+<category>
+	<pattern>* JOKE</pattern>
+	<template>
+		<random>
+		<li> My husband purchased a world map and then gave me a dart and said, “Throw this and wherever it lands—that’s where I’m taking you when this pandemic ends.” Turns out, we’re spending two weeks behind the fridge.</li>
+
+		<li> Day 121 at home and the dog is looking at me like, “See? This is why I chew the furniture!”</li>
+
+		<li> If I keep stress-eating at this level, the buttons on my shirt will start socially distancing from each other.</li>
+
+		<li> Nothing like relaxing on the couch after a long day of being tense on the couch.</li>
+
+		<li> Two grandmothers were bragging about their precious darlings. One of them says to the other, “Mine are so good at social distancing, they won’t even call me.”</li>
+    	</random>
+	</template>
+</category>
+<category>
+	<pattern>* FUN FACT</pattern>
+	<template>
+		<random>
+		<li>Nocca Robotics, founded in 2017 by alumni of IIT Kanpur with an aim to develop robotic solutions for real world problems, has planned to develop affordable high-end ventilators to make the nation self-sufficient in ventilators.</li>
+
+		<li>While it was a known fact that the restrictions and strict lockdowns across most countries in the world significantly brought down global pollution levels, Nasa researchers have now found that since February 2020, nitrogen dioxide levels have gone down by at least 20%.</li>
+
+		<li>Brian Pinker, 82, has become the first person to receive the Oxford-AstraZeneca Covid-19 vaccine.</li>
+
+		<li>Bharat Biotech, Serum Institute, Zydus Cadila, Panacea Biotec, Indian Immunologicals, Mynvax and Biological E are among the domestic pharma firms working on the coronavirus vaccines in India.</li>
+		</random>
+	</template>
+</category>
+<category>
+	<pattern>* something else</pattern>
+	<template><srai>WHAT ELSE CAN YOU DO</srai></template>
+</category>
+<category>
+	<pattern>* something else *</pattern>
+	<template><srai>WHAT ELSE CAN YOU DO</srai></template>
+</category>
+
+<category>
+	<pattern>WHO CREATED YOU</pattern>
+	<template>
+		I was created by the team Mouse potatoes during the fresher's Techweek IITK. A group of six Brilliant Minds :). They secured 5 th position out of 123 teams in techweek. 
+	</template>
+</category>
+
+</aiml>
