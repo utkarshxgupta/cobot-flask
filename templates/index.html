@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9074e5cf69.js" crossorigin="anonymous"></script>
     <title>CoBot - The COVID19 chatbot</title>
   </head>
@@ -21,66 +21,134 @@
           <div class="dropdown">
             <button class="fas fa-cog" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border:none; font-size: 21px;"></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a href="/delete" type="button" class="dropdown-item" >Clear chat</a></li>
+              <li><a href="/" type="button" class="dropdown-item" >Clear chat</a></li>
+              <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">About app</a></li>
+              <!-- Button trigger modal -->
+              <script>
+                var myModal = document.getElementById('myModal')
+                var myInput = document.getElementById('myInput')
+                
+                myModal.addEventListener('shown.bs.modal', function () {
+                  myInput.focus()
+                })
+              </script>
             </ul>
           </div>
         </div>
       </header>
-      
+      <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">About Co-Bot</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Author : Utkarsh Gupta, Sophomore IIT Kanpur <br>
+        This app is developed using Python and Flask. You can also visit the portfolio website below. Thanks for visiting by!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a type="button" class="btn btn-primary" href="https://utkarshxgupta.github.io/" target="_blank">Go to Website</a>
+      </div>
+    </div>
+  </div>
+</div>
       <main class="msger-chat" id="myDIV">
-        {% for msgs in allMsgs %} 
-        <div class="msg right-msg">
-          <div
-           class="msg-img"
-           style="background-image: url({{ url_for('static',filename='user.svg')}})"
-          ></div>
-    
-          <div class="msg-bubble">
-            <div class="msg-info">
-              <div class="msg-info-name">User</div>
-              <div class="msg-info-time">{{tm}}</div>
-            </div>
-    
-            <div class="msg-text">
-              {{msgs.user}}
-            </div>            
-           </div>
-           <script>
-            var elmnt = document.getElementById("myDIV");
-            elmnt.scrollTop += 500;
-          </script>
-        </div>
-        
         <div class="msg left-msg">
-          <div
-           class="msg-img"
-           style="background-image: url({{ url_for('static',filename='bot.png')}})"
-          ></div>
-    
+          <div class="msg-img" style="background-image: url({{ url_for('static',filename='bot.png')}})"></div>
+  
           <div class="msg-bubble">
             <div class="msg-info">
-              <div class="msg-info-name">BOT</div>
-              <div class="msg-info-time">{{tm}}</div>
+              <div class="msg-info-name">CoBot</div>
+              <div class="msg-info-time"></div>
             </div>
-    
+  
             <div class="msg-text">
-              {{msgs.bot}}
+              Hi, welcome to CoBot! You can ask me about Covid19, its symptoms, precautions, vaccines and treatments. I can also tell jokes and fun facts!. 😄
             </div>
           </div>
-          <script>
-            var elmnt = document.getElementById("myDIV");
-            elmnt.scrollTop += 500;
-          </script>
         </div>
-        
-        {% endfor %}
       </main>
       
-      <form class="msger-inputarea" action="/" method="POST">
-        <input type="text" class="msger-input" placeholder="Enter your message..." name="chat" id="chat">
+      <form class="msger-inputarea">
+        <input type="text" class="msger-input" id="textInput" placeholder="Enter your message...">
         <button type="submit" class="msger-send-btn">Send</button>
       </form>
     </section>
+    <script>
+
+      const msgerForm = get(".msger-inputarea");
+      const msgerInput = get(".msger-input");
+      const msgerChat = get(".msger-chat");
+  
+  
+      const BOT_IMG = "{{ url_for('static',filename='bot.png')}}";
+      const PERSON_IMG = "{{ url_for('static',filename='user.svg')}}";
+      const BOT_NAME = "CoBot";
+      const PERSON_NAME = "You";
+  
+      msgerForm.addEventListener("submit", event => {
+        event.preventDefault();
+  
+        const msgText = msgerInput.value;
+        if (!msgText) return;
+  
+        appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+        msgerInput.value = "";
+        botResponse(msgText);
+      });
+  
+      function appendMessage(name, img, side, text) {
+        //   Simple solution for small apps
+        const msgHTML = `
+  <div class="msg ${side}-msg">
+    <div class="msg-img" style="background-image: url(${img})"></div>
+    <div class="msg-bubble">
+      <div class="msg-info">
+        <div class="msg-info-name">${name}</div>
+        <div class="msg-info-time">${formatDate(new Date())}</div>
+      </div>
+      <div class="msg-text">${text}</div>
+    </div>
+  </div>
+  `;
+  
+        msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+        msgerChat.scrollTop += 500;
+      }
+  
+      function botResponse(rawText) {
+  
+        // Bot Response
+        $.get("/get", { msg: rawText }).done(function (data) {
+          console.log(rawText);
+          console.log(data);
+          const msgText = data;
+          appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+  
+        });
+  
+      }
+  
+  
+      // Utils
+      function get(selector, root = document) {
+        return root.querySelector(selector);
+      }
+  
+      function formatDate(date) {
+        const h = "0" + date.getHours();
+        const m = "0" + date.getMinutes();
+  
+        return `${h.slice(-2)}:${m.slice(-2)}`;
+      }
+  
+  
+  
+    </script>
+  
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -1,46 +1,35 @@
 import aiml
 import os
-from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from chatbot import chatbot
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-class Chats(db.Model):
-    sno = db.Column(db.Integer, primary_key=True)
-    user = db.Column(db.String(200), nullable=False)
-    bot = db.Column(db.String(300), nullable=False)
     
 kernel = aiml.Kernel()
     
 if os.path.isfile("bot_brain.brn"):
-   kernel.bootstrap(brainFile="bot_brain.brn")
+    kernel.bootstrap(brainFile="bot_brain.brn")
 else:
-    kernel.bootstrap(learnFiles="startup.aiml", commands=["load a", "load b"])
+    kernel.bootstrap(learnFiles="startup.xml", commands="load a")
     
-@app.route('/delete')
-def delete():
-    db.session.query(Chats).delete()
-    db.session.commit()
-    return redirect("/")
+@app.route('/darkmode')
+def dark():
+    pass
 
-@app.route('/', methods=['GET', 'POST'])
-def chatbot():    
-    chat="Talk to me"
-    if request.method=='POST':
-        chat = request.form['chat']
-        msgs = Chats(user=chat, bot=kernel.respond(chat))        
-        db.session.add(msgs)
-        db.session.commit()
+@app.route('/')
+def home():
+    return render_template("index.html")
     
-    allMsgs = Chats.query.all()
-    now = datetime.now()
-    tm = now.strftime("%H:%M")         
-    return render_template('index.html',allMsgs=allMsgs, tm=tm)
-    
+@app.route('/get')
+def get_bot_response():
+    userText = request.args.get('msg')
+    ans = str(kernel.respond(userText))
+    if ans=="NOTA":
+        ans = str(chatbot.get_response(userText))
+    if ans.startswith("The current time"):
+        ans = "I don't know that yet. You can ask me about Covid19, its symptoms, precautions, vaccines and treatments. I can also tell jokes and fun facts!. 😄"
+    return ans
+
 kernel.saveBrain("bot_brain.brn")
 
 if __name__ == "__main__":

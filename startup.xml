@@ -1,8 +1,8 @@
 <aiml version="0.9.3" encoding="UTF-8">
 	<category>
-	    <pattern>LOAD *</pattern>
+	    <pattern>LOAD A</pattern>
 	    <template>
-		    <learn><star/>.xml</learn>
+		    <learn><star/>./aiml_files/*.aiml</learn>
 	    </template>
     </category>
 </aiml>
