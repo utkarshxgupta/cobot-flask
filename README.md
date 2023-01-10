@@ -1,6 +1,6 @@
 # cobot-flask
-Deployed at http://co-bot-19.herokuapp.com/ 
-> The bot deployed at heroku is an older version *(without the chatterbot library implemented)*, due to some error with spacy.
+Deployed at http://cobot.pythonanywhere.com/ 
+> The bot deployed at pythonanywhere is an older version *(without the chatterbot library implemented)*, due to some error with spacy.
 
 ## Steps for running the project on your local machine
 
